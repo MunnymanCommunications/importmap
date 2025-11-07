@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA & SEO -->
+    <title>AI Architect - The Nexus</title>
+    <meta name="description" content="A fully customizable AI voice assistant with a visual avatar, personality, knowledge, and memory system." />
+    <meta name="theme-color" content="#111827" />
+    <!-- The manifest is dynamically generated for public assistants. This is a placeholder. -->
+    <link rel="manifest" href="/manifest.json" />
+
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "vite": "https://aistudiocdn.com/vite@^7.2.1",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.80.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
+    "ogl": "https://aistudiocdn.com/ogl@^1.0.11",
+    "@supabase/auth-ui-react": "https://aistudiocdn.com/@supabase/auth-ui-react@^0.4.7",
+    "@supabase/auth-ui-shared": "https://aistudiocdn.com/@supabase/auth-ui-shared@^0.1.8"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

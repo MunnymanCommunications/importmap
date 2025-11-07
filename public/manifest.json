@@ -1,0 +1,17 @@
+{
+  "short_name": "AI Architect",
+  "name": "AI Architect - The Nexus",
+  "description": "A fully customizable AI voice assistant with a visual avatar, personality traits, knowledge base, and a memory system. It uses low-latency websockets for real-time conversation.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "128x128 192x192 512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111827",
+  "background_color": "#111827"
+}

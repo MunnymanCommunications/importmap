@@ -14,6 +14,77 @@
     <meta name="description" content="A fully customizable AI voice assistant with a visual avatar, personality, knowledge, and memory system." />
     <meta name="theme-color" content="#111827" />
     <link rel="manifest" href="/manifest.json" />
+
+    <!--! 
+      DEBUGGING SCRIPT: This script catches script loading errors to help diagnose 
+      the "invalid JavaScript MIME type" issue. It logs details to the console 
+      and displays an error message on the page.
+    -->
+    <script>
+      window.addEventListener('error', function(event) {
+        // We only care about errors from script elements.
+        if (!(event.target instanceof HTMLScriptElement)) {
+          return;
+        }
+
+        const errorDetails = {
+          src: event.target.src,
+          type: event.target.type,
+          message: event.message,
+          filename: event.filename,
+          lineno: event.lineno,
+          colno: event.colno,
+          error: event.error,
+        };
+
+        console.group('Script Loading Error Detected');
+        console.error('A script failed to load, which can cause the application to fail.', errorDetails);
+        console.info(
+          `This often happens when the server responds with an incorrect MIME type (e.g., 'text/plain' instead of 'application/javascript'). ` +
+          `Please open your browser's developer tools, go to the "Network" tab, and inspect the failed request for the file: ${errorDetails.src}`
+        );
+        console.groupEnd();
+
+        // Display a helpful message on the page.
+        const root = document.getElementById('root');
+        if (root) {
+          root.innerHTML = `
+            <div style="padding: 2rem; font-family: sans-serif; background-color: #fff3f3; border: 1px solid #ffcccc; color: #cc0000; margin: 1rem; border-radius: 8px;">
+              <h2>Application Error</h2>
+              <p>A critical script failed to load, which prevents the application from starting.</p>
+              <p><strong>Error:</strong> ${event.message}</p>
+              <p><strong>File:</strong> ${errorDetails.src || 'Unknown'}</p>
+              <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ffcccc;" />
+              <p><strong>How to fix:</strong></p>
+              <ol style="text-align: left; margin-left: 2rem;">
+                <li>Open the browser's Developer Tools (usually by pressing F12).</li>
+                <li>Go to the <strong>Network</strong> tab.</li>
+                <li>Reload the page.</li>
+                <li>Look for a request that is highlighted in red. The file URL should match the one above.</li>
+                <li>Click on it and check the <strong>Response Headers</strong>. The \`Content-Type\` header is likely \`text/plain\` when it should be a JavaScript type.</li>
+              </ol>
+              <p>This is typically a server configuration issue.</p>
+            </div>
+          `;
+        }
+      }, true); // Use 'true' to capture the event in the capturing phase.
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "vite": "https://aistudiocdn.com/vite@^7.2.1",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "ogl": "https://aistudiocdn.com/ogl@^1.0.11",
+    "@supabase/auth-ui-shared": "https://aistudiocdn.com/@supabase/auth-ui-shared@^0.1.8",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.80.0",
+    "@supabase/auth-ui-react": "https://aistudiocdn.com/@supabase/auth-ui-react@^0.4.7"
+  }
+}
+</script>
 </head>
   <body>
     <div id="root"></div>
